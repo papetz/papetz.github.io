@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../styles.css" />
+<title>Verification Bias</title>
+</head>
+<body>
+
+<section>
+  <h1>Understanding Verification Bias in Two-Stage Designs</h1>
+  <p><em>March 2026</em></p>
+
+  <p>
+    In many diagnostic studies, only screen-positive individuals
+    undergo gold-standard verification. This induces verification bias,
+    systematically inflating sensitivity and deflating specificity.
+  </p>
+
+  <h2>Formal Structure</h2>
+
+  <p>
+    Let D denote disease status and T the screening test.
+    If only a subset of T = 0 cases are verified,
+    the observed counts become biased estimators of:
+  </p>
+
+  <pre>
+Sensitivity = P(T = 1 | D = 1)
+Specificity = P(T = 0 | D = 0)
+  </pre>
+
+  <p>
+    A Bayesian correction model treats the missing verifications
+    as latent data and integrates over posterior uncertainty.
+  </p>
+
+</section>
+
+</body>
+</html>
