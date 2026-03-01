@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #F5F7FA;
+  background: linear-gradient(to bottom, #F5F7FA, #EEF2F7);
   color: #111827;
   line-height: 1.7;
 }
@@ -11,7 +11,7 @@ body {
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 20px 80px;
+  padding: 20px 60px;
   position: sticky;
   top: 0;
   background: #F5F7FA;
@@ -66,7 +66,7 @@ nav a:hover {
 /* Sections */
 
 section {
-  padding: 80px 80px;
+  padding: 40px 60px;
   max-width: 900px;
   margin: auto;
 }
@@ -129,7 +129,7 @@ footer {
   font-size: 0.85rem;
   color: #6B7280;
   border-top: 1px solid #E5E7EB;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .divider {

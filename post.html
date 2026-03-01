@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<title>Research Note</title>
+</head>
+<body>
+
+<section>
+  <div id="content"></div>
+</section>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const file = params.get("file");
+
+fetch("posts/" + file + ".md")
+  .then(res => res.text())
+  .then(text => {
+    document.getElementById("content").innerHTML = marked.parse(text);
+    renderMathInElement(document.body);
+  });
+</script>
+
+</body>
+</html>
