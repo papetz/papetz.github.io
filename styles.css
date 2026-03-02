@@ -9,19 +9,40 @@ body {
 /* Navigation */
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 60px;
   position: sticky;
   top: 0;
-  background: #F5F7FA;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 60px;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid #E5E7EB;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Add subtle shadow when scrolling */
+nav.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+nav .logo {
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
 
 nav a {
-  margin-left: 25px;
+  margin-left: 28px;
   text-decoration: none;
   color: #374151;
   font-weight: 400;
+  transition: color 0.2s ease;
 }
 
 nav a:hover {

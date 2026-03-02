@@ -19,3 +19,14 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 sections.forEach(section => observer.observe(section));
+
+// Navbar shadow on scroll
+const nav = document.querySelector("nav");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 10) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
+});
