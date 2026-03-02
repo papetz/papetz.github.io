@@ -121,22 +121,27 @@ h2 {
 /* Blog */
 
 .blog-card {
-  margin-bottom: 50px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #E5E7EB;
-}
-
-.blog-card a {
+  display: block;
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
   text-decoration: none;
   color: #111827;
 }
 
-.blog-card a:hover {
-  color: #1E3A8A;
+.blog-card:hover {
+  transform: translateY(-4px);
+}
+
+.blog-card h3 {
+  margin-top: 0;
 }
 
 .blog-card span {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #6B7280;
 }
 

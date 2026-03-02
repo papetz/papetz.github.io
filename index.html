@@ -6,23 +6,15 @@
 <title>Paul | Research</title>
 
 <link rel="stylesheet" href="styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
-<nav>
-  <div class="logo">Paul</div>
-  <div class="links">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#publications">Publications</a>
-    <a href="#research">Writeups</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
+<div id="main-content">
 <section class="hero" id="about">
   <img class="profile-pic" src="images/paul.jpeg" alt="Paul" />
   <h1>Paul Petzold</h1>
@@ -80,19 +72,16 @@
 <section id="research">
   <h2>Writeups</h2>
 
-  <div class="blog-card">
-    <h3>
-      <a href="post.html?file=verification-bias">
-        Verification Bias in Two-Stage Designs
-      </a>
-    </h3>
+  <a href="post.html#verification-bias" class="blog-card">
+    <h3>Verification Bias in Two-Stage Designs</h3>
     <p>
       Why naive sensitivity and specificity estimates are biased when verification is incomplete.
     </p>
     <span>March 2026</span>
-  </div>
+  </a>
 
 </section>
+</div>
 
 <section id="contact">
   <h2>Contact</h2>
@@ -100,11 +89,7 @@
   <p>ORCID: 0000-0002-1234-5678</p>
 </section>
 
-<footer>
-  <div>© 2026 Paul Petzold. All rights reserved.</div>
-  <div class="divider"></div>
-  <div><a href="impressum.html">Impressum</a></div>
-</footer>
+
 
 <script src="script.js"></script>
 </body>
