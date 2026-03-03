@@ -14,14 +14,32 @@
 </head>
 <body>
 
-<div id="main-content">
-  <section>
-    <div id="content"></div>
-  </section>
-</div>
+<section>
+  <div id="content"></div>
+</section>
 
-<!-- post loading handled by script.js -->
+<script>
+const params = new URLSearchParams(window.location.search);
+const file = params.get("file");
 
+if (!file) {
+  document.getElementById("content").innerHTML = "<p>No post specified.</p>";
+} else {
+  fetch("posts/" + file + ".md")
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}: Could not load post`);
+      return res.text();
+    })
+    .then(text => {
+      document.getElementById("content").innerHTML = marked.parse(text);
+      renderMathInElement(document.body);
+    })
+    .catch(err => {
+      document.getElementById("content").innerHTML = "<p>Error loading post: " + err.message + "</p>";
+      console.error(err);
+    });
+}
+</script>
 
 <script src="script.js"></script>
 </body>

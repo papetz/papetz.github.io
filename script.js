@@ -25,6 +25,7 @@ async function loadNav() {
   }
 }
 
+
 async function loadFooter() {
   try {
     const response = await fetch("footer.html");
@@ -56,65 +57,6 @@ if (!document.querySelector("nav")) {
 if (!document.querySelector("footer")) {
   loadFooter();
 }
-
-// expose pubic helpers
-window.loadPost = loadPost;
-
-// handle browser navigation events (back/forward)
-window.addEventListener('popstate', event => {
-  if (event.state && event.state.type === 'post') {
-    loadPost(event.state.file);
-  }
-});
-
-// Load a post markdown into #main-content (SPA-friendly)
-function loadPost(file) {
-  if (!file) {
-    return;
-  }
-  const container = document.getElementById("main-content");
-  if (!container) {
-    // not on a page that supports dynamic loading; just navigate
-    window.location.href = "post.html#" + file;
-    return;
-  }
-
-  // replace content with spinner/placeholder
-  container.innerHTML = `<section><div id="content">Loading...</div></section>`;
-  fetch("posts/" + file + ".md")
-    .then(res => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}: Could not load post`);
-      return res.text();
-    })
-    .then(text => {
-      container.querySelector("#content").innerHTML = marked.parse(text);
-      renderMathInElement(container);
-      window.scrollTo(0, 0);
-      document.title = file.replace(/-/g, " ") + " – Paul | Research";
-    })
-    .catch(err => {
-      container.querySelector("#content").innerHTML = "<p>Error loading post: " + err.message + "</p>";
-      console.error(err);
-    });
-}
-
-// intercept internal link clicks for SPA-style navigation
-document.addEventListener('click', e => {
-  const anchor = e.target.closest('a');
-  if (!anchor) return;
-  const href = anchor.getAttribute('href');
-  if (!href || href.startsWith('http') || href.startsWith('mailto:')) return;
-
-  // post link
-  if (href.startsWith('post.html')) {
-    const hash = href.split('#')[1];
-    if (hash) {
-      e.preventDefault();
-      loadPost(hash);
-      history.pushState({ type: 'post', file: hash }, '', href);
-    }
-  }
-});
 
 // Smooth scroll
 function attachSmoothScroll() {
@@ -174,27 +116,12 @@ sections.forEach(section => observer.observe(section));
 // Navbar shadow on scroll
 const nav = document.querySelector("nav");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 10) {
-    nav.classList.add("scrolled");
-  } else {
-    nav.classList.remove("scrolled");
-  }
-});
-
-// on initial load, handle hash/post if present
-window.addEventListener('load', () => {
-  const hash = window.location.hash.slice(1);
-  if (hash) {
-    // either a direct post link or section
-    if (window.location.pathname.endsWith('post.html')) {
-      loadPost(hash);
-    } else if (hash.startsWith('post=')) {
-      loadPost(hash.split('=')[1]);
+if (nav) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      nav.classList.add("scrolled");
     } else {
-      // scroll to section on same page
-      const target = document.querySelector('#' + hash);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      nav.classList.remove("scrolled");
     }
-  }
-});
+  });
+}
