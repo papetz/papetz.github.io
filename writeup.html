@@ -19,13 +19,15 @@
 </section>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const file = params.get("file");
+const file = window.location.hash.slice(1); // Remove the # prefix
+console.log("URL:", window.location.href);
+console.log("Hash:", window.location.hash);
+console.log("File parameter:", file);
 
 if (!file) {
-  document.getElementById("content").innerHTML = "<p>No post specified.</p>";
+  document.getElementById("content").innerHTML = "<p>No post specified.</p><p style='color: #666; font-size: 0.9em;'>URL: " + window.location.href + "</p><p style='color: #666; font-size: 0.9em;'>Hash: " + window.location.hash + "</p>";
 } else {
-  fetch("posts/" + file + ".md")
+  fetch("writeups/" + file + ".md")
     .then(res => {
       if (!res.ok) throw new Error(`HTTP ${res.status}: Could not load post`);
       return res.text();
